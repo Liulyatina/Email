@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc
+		https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="by.it_academy.jd2.mail.controller.http,
+    by.it_academy.jd2.mail.controller.filter"/>
+
+    <!-- Beans DAO -->
+    <bean id="mailDao" class="by.it_academy.jd2.mail.dao.impl.MailDaoImpl"/>
+
+    <!-- Beans Service -->
+    <bean id="mailService" class="by.it_academy.jd2.mail.service.impl.SaveMailServiceImpl">
+        <constructor-arg type="by.it_academy.jd2.mail.dao.api.IMailDao" ref="mailDao"/>
+        <constructor-arg type="by.it_academy.jd2.mail.service.converter.MailConverter" ref="convert"/>
+    </bean>
+    <bean id="convert" class="by.it_academy.jd2.mail.service.converter.MailConverter"/>
+
+</beans>
