@@ -53,6 +53,9 @@ public class SendMailServiceImpl implements ISendMailService {
             logger.info("Email sent successfully to: {}", to);
             return true;
 
+        } catch (AuthenticationFailedException e) {
+            logger.error("Authentication failed. Username or password not accepted", e);
+            return false;
         } catch (MessagingException e) {
             logger.error("Failed to send email", e);
             return false;

@@ -32,10 +32,10 @@
     </bean>
 
     <bean id="sendMailService" class="by.it_academy.jd2.mail.service.impl.SendMailServiceImpl">
-        <constructor-arg value="smtp.gmail.com"/>
+        <constructor-arg value="smtp.mail.ru"/>
         <constructor-arg value="587"/>
-        <constructor-arg value="derugindima46@gmail.com"/>
-        <constructor-arg value="glubokoe"/>
+        <constructor-arg value="dzarankov@bk.ru"/>
+        <constructor-arg value="faPXkcccQEyq6f7FRqKp"/>
     </bean>
 
     <bean id="daoFactory" class="by.it_academy.jd2.mail.dao.factory.DaoFactory" factory-method="getEntityManager"/>
