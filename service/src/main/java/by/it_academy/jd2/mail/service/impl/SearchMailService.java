@@ -21,8 +21,7 @@ public class SearchMailService implements ISearchMailService {
 
     @Override
     public Optional<MailEntity> findById(Long id) {
-        Optional<MailEntity> optional = mailDao.findById(id);
 
-        return optional;
+        return mailDao.findById(id);
     }
 }

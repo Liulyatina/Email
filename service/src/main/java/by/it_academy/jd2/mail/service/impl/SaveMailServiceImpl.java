@@ -17,7 +17,6 @@ public class SaveMailServiceImpl implements ISaveMailService {
     }
 
     @Override
-    @Transactional
     public void saveMail(MailDTO mailDTO) {
         MailEntity mailEntity = mailConverter.toEntity(mailDTO);
         mailDao.save(mailEntity);

@@ -3,7 +3,6 @@ package by.it_academy.jd2.mail.service.impl;
 import by.it_academy.jd2.mail.service.api.ISendMailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
@@ -11,7 +10,6 @@ import jakarta.mail.internet.MimeMessage;
 
 import java.util.Properties;
 
-@Service
 public class SendMailServiceImpl implements ISendMailService {
     private static final Logger logger = LoggerFactory.getLogger(SendMailServiceImpl.class);
 

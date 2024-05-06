@@ -4,7 +4,6 @@ import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import org.springframework.stereotype.Component;
 
-@Component
 public class MailConverter {
 
     public MailEntity toEntity(MailDTO mailDTO) {
