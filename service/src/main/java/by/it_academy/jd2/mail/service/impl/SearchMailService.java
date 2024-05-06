@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class SearchMailService implements ISearchMailService {
+    private final IMailDao mailDao;
 
     public SearchMailService(IMailDao mailDao) {
         this.mailDao = mailDao;
     }
-
-    private final IMailDao mailDao;
 
     @Override
     public List<MailEntity> findAll(Integer page, Integer size) {
@@ -22,6 +21,8 @@ public class SearchMailService implements ISearchMailService {
 
     @Override
     public Optional<MailEntity> findById(Long id) {
-        return mailDao.findById(id);
+        Optional<MailEntity> optional = mailDao.findById(id);
+
+        return optional;
     }
 }

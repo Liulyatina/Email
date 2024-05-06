@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
 
     private final static Logger logger = LogManager.getLogger();
 
-    @ExceptionHandler
+    @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegal(IllegalArgumentException e) {
         logger.log(Level.WARN, "Пользователь сделал что-то не так", e);
 
@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorObj, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleIllegal(Exception e) {
         logger.log(Level.ERROR, "Ошибка на стороне сервера", e);
 

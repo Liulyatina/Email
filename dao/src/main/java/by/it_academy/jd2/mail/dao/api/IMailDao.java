@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface IMailDao {
     List<MailEntity> findAll(Integer page, Integer size);
     Optional<MailEntity> findById(Long id);
-    int save(MailEntity email);
+    void save(MailEntity email);
 }

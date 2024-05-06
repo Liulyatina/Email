@@ -5,9 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a35770d-3f16-4d68-9f28-81a151f03957" name="Changes" comment="взаимодействие с БД">
+      <change afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/ISendMailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/impl/SendMailServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Home_work" beforeDir="false" afterPath="$PROJECT_DIR$/../Home_work" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bookigFlights" beforeDir="false" afterPath="$PROJECT_DIR$/../bookigFlights" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../first_web_app" beforeDir="false" afterPath="$PROJECT_DIR$/../first_web_app" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/factory/AppFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/factory/AppFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/filter/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/filter/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/http/MailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/http/MailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/src/main/webapp/WEB-INF/application-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/src/main/webapp/WEB-INF/application-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dao/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/src/main/java/by/it_academy/jd2/mail/dao/api/IMailDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/by/it_academy/jd2/mail/dao/api/IMailDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/src/main/java/by/it_academy/jd2/mail/dao/factory/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/by/it_academy/jd2/mail/dao/factory/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/src/main/java/by/it_academy/jd2/mail/dao/impl/MailDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/by/it_academy/jd2/mail/dao/impl/MailDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/ISaveMailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/ISaveMailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/ISearchMailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/ISearchMailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/dto/MailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/api/dto/MailDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/impl/SaveMailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/impl/SaveMailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/impl/SearchMailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/impl/SearchMailService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,27 +65,37 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/romamihalevic/IdeaProjects/mail/controller/src/main/java/by/it_academy/jd2/mail/controller&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.controller [clean].executor": "Run",
+    "Maven.controller [package].executor": "Run",
+    "Maven.controller [validate].executor": "Run",
+    "Maven.mail [clean].executor": "Run",
+    "Maven.mail [install].executor": "Run",
+    "Maven.mail [package].executor": "Run",
+    "Maven.mail [validate].executor": "Run",
+    "Maven.service [clean].executor": "Run",
+    "Maven.service [install].executor": "Run",
+    "Remote JVM Debug.deBug.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "20",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/romamihalevic/IdeaProjects/mail/controller/src/main/java/by/it_academy/jd2/mail/controller",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller" />
@@ -80,6 +110,21 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="by.it_academy.jd2.mail.controller.factory" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="deBug" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -98,10 +143,38 @@
       <updated>1714757052058</updated>
       <workItem from="1714757053071" duration="4336000" />
       <workItem from="1714815149806" duration="22226000" />
+      <workItem from="1714849569492" duration="1444000" />
+      <workItem from="1714857393823" duration="2557000" />
+      <workItem from="1714895787796" duration="35006000" />
+      <workItem from="1714949402211" duration="7596000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/service/src/main/java/by/it_academy/jd2/mail/service/impl/SendMailServiceImpl.java</url>
+          <line>30</line>
+          <properties class="by.it_academy.jd2.mail.service.impl.SendMailServiceImpl" method="sendMail">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/controller/src/main/java/by/it_academy/jd2/mail/controller/http/MailController.java</url>
+          <line>48</line>
+          <properties class="by.it_academy.jd2.mail.controller.http.MailController" method="saveMail">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
