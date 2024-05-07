@@ -2,6 +2,7 @@ package by.it_academy.jd2.mail.service.impl;
 
 import by.it_academy.jd2.mail.dao.api.IMailDao;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
+import by.it_academy.jd2.mail.service.api.IMailService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import by.it_academy.jd2.mail.service.converter.MailConverter;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import jakarta.mail.internet.MimeMessage;
 
 import java.util.Properties;
 
-public class MailService {
+public class MailService implements IMailService {
     private static final Logger logger = LoggerFactory.getLogger(MailService.class);
 
     private final IMailDao mailDao;
@@ -35,6 +36,7 @@ public class MailService {
         props.put("mail.smtp.starttls.enable", "true");
     }
 
+    @Override
     public void saveAndSend(MailDTO mailDTO) {
         MailEntity mailEntity = mailConverter.toEntity(mailDTO);
         mailDao.save(mailEntity);
