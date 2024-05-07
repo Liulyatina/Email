@@ -10,8 +10,8 @@ public class DaoFactory {
     static {
         entityManagerFactory = Persistence.createEntityManagerFactory("jpa-entity-definition");
     }
-    public static EntityManager getEntityManager() {
+
+    public static EntityManager getEntityManager(){
         return entityManagerFactory.createEntityManager();
     }
-
 }

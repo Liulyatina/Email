@@ -15,10 +15,8 @@
     <context:component-scan base-package="by.it_academy.jd2.mail.controller.http,
     by.it_academy.jd2.mail.controller.filter"/>
 
-
-
     <!-- Beans DAO -->
-    <bean id="mailDao" class="by.it_academy.jd2.mail.dao.impl.MailDaoImpl"/>
+    <bean id="mailDao" class="by.it_academy.jd2.mail.dao.impl.MailDao"/>
 
     <!-- Beans Service -->
     <bean id="saveMailService" class="by.it_academy.jd2.mail.service.impl.SaveMailServiceImpl">
@@ -39,6 +37,5 @@
     </bean>
 
     <bean id="daoFactory" class="by.it_academy.jd2.mail.dao.factory.DaoFactory" factory-method="getEntityManager"/>
-
 
 </beans>

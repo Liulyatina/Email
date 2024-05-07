@@ -11,7 +11,7 @@ import jakarta.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
-public class MailDaoImpl implements IMailDao {
+public class MailDao implements IMailDao {
 
     @Override
     public List<MailEntity> findAll(Integer page, Integer size) {

@@ -5,10 +5,11 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
+@EqualsAndHashCode
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class MailDTO {
-    private Long id;
     private String recipient;
     private String subject;
     private String text;
