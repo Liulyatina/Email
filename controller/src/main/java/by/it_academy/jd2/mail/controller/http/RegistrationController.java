@@ -3,6 +3,7 @@ package by.it_academy.jd2.mail.controller.http;
 import by.it_academy.jd2.mail.controller.factory.AppFactory;
 import by.it_academy.jd2.mail.core.dto.UserDto;
 import by.it_academy.jd2.mail.service.api.IUserRegistrationService;
+import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
 import by.it_academy.jd2.mail.service.impl.UserRegistrationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class RegistrationController {
     public String registration(@RequestParam String email,
                                @RequestParam String password,
                                @RequestParam String birthday,
-                               @RequestParam String fullName) throws IOException {
+                               @RequestParam String fullName) throws IOException, FailMailSendException {
 
         LocalDate parsedBrithday = LocalDate.parse(birthday);
 

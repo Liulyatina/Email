@@ -1,6 +1,7 @@
 package by.it_academy.jd2.mail.service.impl;
 
 import by.it_academy.jd2.mail.dao.api.IMailDao;
+import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.service.api.IMailSendService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import by.it_academy.jd2.mail.service.converter.MailConverter;
@@ -35,7 +36,7 @@ public class MailSendService implements IMailSendService {
     }
 
     @Override
-    public void send(MailDTO mailDTO) {
+    public void send(MailDTO mail) {
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -46,13 +47,13 @@ public class MailSendService implements IMailSendService {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailDTO.getRecipient()));
-            message.setSubject(mailDTO.getSubject());
-            message.setText(mailDTO.getText());
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mail.getRecipient()));
+            message.setSubject(mail.getSubject());
+            message.setText(mail.getText());
 
             Transport.send(message);
 
-            logger.debug("Email sent successfully to: {}", mailDTO.getRecipient());
+            logger.debug("Email sent successfully to: {}", mail.getRecipient());
 
         } catch (AuthenticationFailedException e) {
             logger.error("Authentication failed. Username or password not accepted", e);
