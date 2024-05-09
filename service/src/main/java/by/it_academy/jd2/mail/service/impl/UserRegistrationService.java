@@ -2,6 +2,7 @@ package by.it_academy.jd2.mail.service.impl;
 
 import by.it_academy.jd2.mail.dao.api.IUserDao;
 import by.it_academy.jd2.mail.dao.entity.UserEntity;
+import by.it_academy.jd2.mail.service.api.IMailSendService;
 import by.it_academy.jd2.mail.service.api.IUserRegistrationService;
 import by.it_academy.jd2.mail.core.dto.UserDto;
 import by.it_academy.jd2.mail.service.converter.UserConverter;

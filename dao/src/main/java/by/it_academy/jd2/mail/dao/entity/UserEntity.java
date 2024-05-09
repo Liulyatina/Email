@@ -12,6 +12,7 @@ public class UserEntity {
     private String email;
     private String password;
     private LocalDateTime birthday;
+    @Column(name ="fullname")
     private String fullName;
 
     public UserEntity() {

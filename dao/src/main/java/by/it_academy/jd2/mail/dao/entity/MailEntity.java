@@ -11,6 +11,7 @@ public class MailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "dt_create")
     private LocalDateTime dtCreate;
     private MailStatus status;
     private String recipient;
