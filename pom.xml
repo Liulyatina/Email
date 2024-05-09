@@ -12,6 +12,7 @@
     <module>controller</module>
     <module>service</module>
     <module>dao</module>
+    <module>core</module>
   </modules>
 
 

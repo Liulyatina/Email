@@ -2,6 +2,7 @@ package by.it_academy.jd2.mail.dao.impl;
 
 import by.it_academy.jd2.mail.dao.api.IMailDao;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
+import by.it_academy.jd2.mail.dao.entity.MailStatus;
 import by.it_academy.jd2.mail.dao.factory.DaoFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -33,10 +34,31 @@ public class MailDao implements IMailDao {
     }
 
     @Override
+    public MailEntity update(MailEntity entity) {
+        EntityManager em = DaoFactory.getEntityManager();
+        em.getTransaction().begin();
+        MailEntity updateEntity = em.merge(entity);
+        em.getTransaction().commit();
+        return updateEntity;
+    }
+
+    @Override
+    public List<MailEntity> getByStatus(MailStatus mailStatus) {
+        EntityManager em = DaoFactory.getEntityManager();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<MailEntity> query = cb.createQuery(MailEntity.class);
+        Root<MailEntity> root = query.from(MailEntity.class);
+        query.select(root).where(cb.equal(root.get("status"), mailStatus));
+        return em.createQuery(query).getResultList();
+    }
+
+    @Override
     public void save(MailEntity mail) {
         EntityManager em = DaoFactory.getEntityManager();
         em.getTransaction().begin();
         em.persist(mail);
         em.getTransaction().commit();
     }
+
+
 }

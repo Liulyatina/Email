@@ -2,10 +2,10 @@ package by.it_academy.jd2.mail.controller.http;
 
 import by.it_academy.jd2.mail.controller.factory.AppFactory;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
-import by.it_academy.jd2.mail.service.api.IMailService;
+import by.it_academy.jd2.mail.service.api.IMailCreationService;
+import by.it_academy.jd2.mail.service.api.IMailSendService;
 import by.it_academy.jd2.mail.service.api.ISearchMailService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
-import by.it_academy.jd2.mail.service.converter.MailConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +20,13 @@ import java.util.List;
 public class MailController {
     private final ObjectMapper mapper = AppFactory.getMapper();
     private final ISearchMailService searchMailService;
-    private final IMailService mailService;
+    private final IMailCreationService mailService;
+    private final IMailSendService sendService;
 
-    public MailController(ISearchMailService searchMailService, IMailService mailService) {
+    public MailController(ISearchMailService searchMailService, IMailCreationService mailService, IMailSendService sendService) {
         this.searchMailService = searchMailService;
         this.mailService = mailService;
+        this.sendService = sendService;
     }
 
     @GetMapping(produces = "application/json;charset=UTF-8")
@@ -45,8 +47,8 @@ public class MailController {
     @PostMapping(produces = "application/json;charset=UTF-8")
     public ResponseEntity<String> saveMail(@RequestBody MailDTO mailDTO) throws IOException{
         try {
-            mailService.saveAndSend(mailDTO);
-
+            mailService.create(mailDTO);
+            sendService.send(mailDTO);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body("Письмо успешно сохранено и отправлено");
         } catch (Exception e) {

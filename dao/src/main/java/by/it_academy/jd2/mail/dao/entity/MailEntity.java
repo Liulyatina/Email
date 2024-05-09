@@ -2,12 +2,17 @@ package by.it_academy.jd2.mail.dao.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Table(name = "emails", schema = "mail_app")
 @Entity
 public class MailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private LocalDateTime dtCreate;
+    private MailStatus status;
     private String recipient;
     private String subject;
     private String text;
@@ -15,8 +20,10 @@ public class MailEntity {
     public MailEntity() {
     }
 
-    public MailEntity(Long id, String recipient, String subject, String text) {
+    public MailEntity(Long id, LocalDateTime dtCreate, MailStatus status, String recipient, String subject, String text) {
         this.id = id;
+        this.dtCreate = dtCreate;
+        this.status = status;
         this.recipient = recipient;
         this.subject = subject;
         this.text = text;
@@ -28,6 +35,22 @@ public class MailEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDateTime getDtCreate() {
+        return dtCreate;
+    }
+
+    public void setDtCreate(LocalDateTime dtCreate) {
+        this.dtCreate = dtCreate;
+    }
+
+    public MailStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MailStatus status) {
+        this.status = status;
     }
 
     public String getRecipient() {
