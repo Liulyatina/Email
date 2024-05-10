@@ -43,16 +43,21 @@ public class MailController {
         }
     }
 
-
-    @PostMapping(produces = "application/json;charset=UTF-8")
+    @PostMapping(value = "/single", produces = "application/json;charset=UTF-8")
     public ResponseEntity<String> saveMail(@RequestBody MailDTO mailDTO) throws IOException{
-        try {
+        mailService.create(mailDTO);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Письмо успешно сохранено и отправлено");
+    }
+
+    @PostMapping(value = "/bulk", produces = "application/json;charset=UTF-8")
+    public ResponseEntity<String> saveMails(@RequestBody List<MailDTO> mailDTOs) throws IOException{
+        for (MailDTO mailDTO : mailDTOs) {
             mailService.create(mailDTO);
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body("Письмо успешно сохранено и отправлено");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Не удалось сохранить и отправить письмо: " + e.getMessage());
         }
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Письма успешно сохранены и отправлены");
     }
 }
+
+

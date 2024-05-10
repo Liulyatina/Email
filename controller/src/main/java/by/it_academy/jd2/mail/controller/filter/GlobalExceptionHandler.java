@@ -1,5 +1,6 @@
 package by.it_academy.jd2.mail.controller.filter;
 
+import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,4 +36,15 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorObj, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(FailMailSendException.class)
+    public ResponseEntity<Map<String, Object>> handleMailSendFailure(FailMailSendException e) {
+        logger.log(Level.ERROR, "Ошибка при отправке почты", e);
+
+        Map<String, Object> errorObj = new HashMap<>();
+        errorObj.put("error", e.getMessage());
+
+        return new ResponseEntity<>(errorObj, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

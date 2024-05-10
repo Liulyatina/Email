@@ -5,7 +5,7 @@ import by.it_academy.jd2.mail.service.api.IConverter;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 
 public class MailConverter implements IConverter<MailDTO, MailEntity> {
-
+    @Override
     public MailEntity toEntity(MailDTO mailDTO) {
         MailEntity mailEntity = new MailEntity();
         mailEntity.setRecipient(mailDTO.getRecipient());
@@ -14,6 +14,7 @@ public class MailConverter implements IConverter<MailDTO, MailEntity> {
         return mailEntity;
     }
 
+    @Override
     public MailDTO toDTO(MailEntity mailEntity) {
         MailDTO mailDTO = new MailDTO();
         mailDTO.setRecipient(mailEntity.getRecipient());

@@ -6,6 +6,7 @@ import by.it_academy.jd2.mail.dao.entity.MailStatus;
 import by.it_academy.jd2.mail.service.api.IMailCreationService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import by.it_academy.jd2.mail.service.converter.MailConverter;
+import jakarta.transaction.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,6 +23,7 @@ public class MailCreationService implements IMailCreationService {
     }
 
     @Override
+    @Transactional
     public void create(List<MailDTO> dtoList) {
         for (MailDTO dto : dtoList) {
             create(dto);
@@ -29,6 +31,7 @@ public class MailCreationService implements IMailCreationService {
     }
 
     @Override
+    @Transactional
     public void create(MailDTO dto) {
         MailEntity mailEntity = convertDtoToEntity(dto);
         mailDao.save(mailEntity);

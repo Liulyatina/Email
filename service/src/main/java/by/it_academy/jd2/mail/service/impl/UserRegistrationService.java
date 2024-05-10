@@ -7,6 +7,7 @@ import by.it_academy.jd2.mail.service.api.IUserRegistrationService;
 import by.it_academy.jd2.mail.core.dto.UserDto;
 import by.it_academy.jd2.mail.service.converter.UserConverter;
 import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
+import jakarta.transaction.Transactional;
 
 
 public class UserRegistrationService implements IUserRegistrationService {
@@ -22,6 +23,7 @@ public class UserRegistrationService implements IUserRegistrationService {
     }
 
     @Override
+    @Transactional
     public void create(UserDto userDto) throws FailMailSendException {
 
         if (userDto.getEmail() == null || userDto.getEmail().isBlank()) {

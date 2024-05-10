@@ -13,12 +13,10 @@ public class SearchMailService implements ISearchMailService {
     public SearchMailService(IMailDao mailDao) {
         this.mailDao = mailDao;
     }
-
     @Override
     public List<MailEntity> findAll(Integer page, Integer size) {
         return mailDao.findAll(page, size);
     }
-
     @Override
     public Optional<MailEntity> findById(Long id) {
         return mailDao.findById(id);

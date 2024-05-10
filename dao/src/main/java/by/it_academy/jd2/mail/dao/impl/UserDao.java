@@ -14,6 +14,7 @@ public class UserDao implements IUserDao {
     @Override
     public void create(UserEntity user) {
         EntityManager em = DaoFactory.getEntityManager();
+        try {
         List<UserEntity> existingUsers = getByLogin(user.getEmail());
 
         if (!existingUsers.isEmpty()) {
@@ -23,16 +24,22 @@ public class UserDao implements IUserDao {
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
-        em.close();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<UserEntity> getByLogin(String email) {
         EntityManager em = DaoFactory.getEntityManager();
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<UserEntity> query = cb.createQuery(UserEntity.class);
-        Root<UserEntity> root = query.from(UserEntity.class);
-        query.select(root).where(cb.equal(root.get("email"), email));
-        return em.createQuery(query).getResultList();
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<UserEntity> query = cb.createQuery(UserEntity.class);
+            Root<UserEntity> root = query.from(UserEntity.class);
+            query.select(root).where(cb.equal(root.get("email"), email));
+            return em.createQuery(query).getResultList();
+        } finally {
+            em.close();
+        }
     }
 }
