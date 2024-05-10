@@ -13,10 +13,12 @@ import java.util.List;
 public class MailCreationService implements IMailCreationService {
     private final IMailDao mailDao;
     private final MailConverter mailConverter;
+    private final MailSendService mailSendService;
 
-    public MailCreationService(IMailDao mailDao, MailConverter mailConverter) {
+    public MailCreationService(IMailDao mailDao, MailConverter mailConverter, MailSendService mailSendService) {
         this.mailDao = mailDao;
         this.mailConverter = mailConverter;
+        this.mailSendService = mailSendService;
     }
 
     @Override
@@ -30,7 +32,7 @@ public class MailCreationService implements IMailCreationService {
     public void create(MailDTO dto) {
         MailEntity mailEntity = convertDtoToEntity(dto);
         mailDao.save(mailEntity);
-
+        mailSendService.send(dto);
     }
 
     private MailEntity convertDtoToEntity(MailDTO dto) {
@@ -39,7 +41,6 @@ public class MailCreationService implements IMailCreationService {
         mailEntity.setStatus(MailStatus.LOADED);
         return mailEntity;
     }
-
 
     @Override
     public void update(MailEntity mail) {

@@ -6,6 +6,8 @@ import by.it_academy.jd2.mail.service.api.IUserRegistrationService;
 import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
 import by.it_academy.jd2.mail.service.impl.UserRegistrationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -22,7 +24,7 @@ public class RegistrationController {
     }
 
     @PostMapping(produces = "application/json;charset=UTF-8")
-    public String registration(@RequestParam("email") String email,
+    public ResponseEntity<String> registration(@RequestParam("email") String email,
                                @RequestParam("password") String password,
                                @RequestParam("birthday") String birthday,
                                @RequestParam("fullName") String fullName) throws IOException, FailMailSendException {
@@ -35,10 +37,13 @@ public class RegistrationController {
                 .birthday(parsedBrithday.atStartOfDay())
                 .fullName(fullName)
                 .build();
-
-        userService.create(userDto);
-
-        return "Пользователь успешно зарегистрирован";
-
+        try {
+            userService.create(userDto);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body("Письмо успешно сохранено и отправлено");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Не удалось сохранить и отправить письмо: " + e.getMessage());
+        }
     }
 }

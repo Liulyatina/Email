@@ -48,7 +48,6 @@ public class MailController {
     public ResponseEntity<String> saveMail(@RequestBody MailDTO mailDTO) throws IOException{
         try {
             mailService.create(mailDTO);
-            sendService.send(mailDTO);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body("Письмо успешно сохранено и отправлено");
         } catch (Exception e) {
