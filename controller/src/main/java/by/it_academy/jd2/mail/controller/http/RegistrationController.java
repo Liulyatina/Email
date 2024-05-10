@@ -31,6 +31,8 @@ public class RegistrationController {
 
         LocalDate parsedBrithday = LocalDate.parse(birthday);
 
+
+//        тут этого быть не должно
         UserDto userDto = UserDto.builder()
                 .email(email)
                 .password(password)
