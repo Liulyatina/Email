@@ -30,6 +30,7 @@ public class MailCreationService implements IMailCreationService {
     public void create(MailDTO dto) {
         MailEntity mailEntity = convertDtoToEntity(dto);
         mailDao.save(mailEntity);
+
     }
 
     private MailEntity convertDtoToEntity(MailDTO dto) {
@@ -41,13 +42,11 @@ public class MailCreationService implements IMailCreationService {
 
 
     @Override
-
     public void update(MailEntity mail) {
         mailDao.update(mail);
     }
 
     @Override
-
     public List<MailEntity> getLoaded() {
         return mailDao.getByStatus(MailStatus.OK);
     }

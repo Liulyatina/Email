@@ -23,12 +23,12 @@
 
     <!-- Бины Service -->
     <bean id="mailCreate" class="by.it_academy.jd2.mail.service.impl.MailCreationService">
-        <constructor-arg ref="mailDao"/>
-        <constructor-arg ref="mailConvert"/>
+        <constructor-arg type="by.it_academy.jd2.mail.dao.api.IMailDao"  ref="mailDao"/>
+        <constructor-arg  ref="mailConvert"/>
     </bean>
 
     <bean id="mailSend" class="by.it_academy.jd2.mail.service.impl.MailSendService">
-        <constructor-arg ref="mailDao"/>
+        <constructor-arg type="by.it_academy.jd2.mail.dao.api.IMailDao" ref="mailDao"/>
         <constructor-arg ref="mailConvert"/>
         <constructor-arg value="smtp.mail.ru"/>
         <constructor-arg value="587"/>

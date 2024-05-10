@@ -30,11 +30,11 @@ public class UserRegistrationService implements IUserRegistrationService {
         if (userDto.getPassword() == null || userDto.getPassword().isBlank()) {
             throw new IllegalArgumentException("Пароль должен быть обязательно указан");
         }
+        if (userDto.getBirthday() == null) {
+            throw new IllegalArgumentException("Дата рождения должна быть обязательно указана");
+        }
         if (userDto.getFullName() == null || userDto.getFullName().isBlank()) {
             throw new IllegalArgumentException("Имя должно быть обязательно указано");
-        }
-        if (userDao.getByLogin(userDto.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("Пользователь с таким email уже существует");
         }
 
         UserEntity userEntity = converter.toEntity(userDto);

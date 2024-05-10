@@ -17,15 +17,15 @@ public class RegistrationController {
     private final ObjectMapper mapper = AppFactory.getMapper();
     private final IUserRegistrationService userService;
 
-    public RegistrationController(UserRegistrationService userService) {
+    public RegistrationController(IUserRegistrationService userService) {
         this.userService = userService;
     }
 
     @PostMapping(produces = "application/json;charset=UTF-8")
-    public String registration(@RequestParam String email,
-                               @RequestParam String password,
-                               @RequestParam String birthday,
-                               @RequestParam String fullName) throws IOException, FailMailSendException {
+    public String registration(@RequestParam("email") String email,
+                               @RequestParam("password") String password,
+                               @RequestParam("birthday") String birthday,
+                               @RequestParam("fullName") String fullName) throws IOException, FailMailSendException {
 
         LocalDate parsedBrithday = LocalDate.parse(birthday);
 
