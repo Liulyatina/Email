@@ -1,8 +1,7 @@
 package by.it_academy.jd2.mail.service.impl;
 
-import by.it_academy.jd2.mail.dao.api.IUserDao;
+import by.it_academy.jd2.mail.dao.api.IUserRepository;
 import by.it_academy.jd2.mail.dao.entity.UserEntity;
-import by.it_academy.jd2.mail.service.api.IMailSendService;
 import by.it_academy.jd2.mail.service.api.IUserRegistrationService;
 import by.it_academy.jd2.mail.core.dto.UserDto;
 import by.it_academy.jd2.mail.service.converter.UserConverter;
@@ -11,13 +10,13 @@ import jakarta.transaction.Transactional;
 
 
 public class UserRegistrationService implements IUserRegistrationService {
-    private final IUserDao userDao;
+    private final IUserRepository userRepository;
     private final UserConverter converter;
     private final WelcomeMailService welcomeMailService;
 
 
-    public UserRegistrationService(IUserDao userDao, UserConverter converter, WelcomeMailService welcomeMailService) {
-        this.userDao = userDao;
+    public UserRegistrationService(IUserRepository userDao, UserConverter converter, WelcomeMailService welcomeMailService) {
+        this.userRepository = userDao;
         this.converter = converter;
         this.welcomeMailService = welcomeMailService;
     }
@@ -41,9 +40,8 @@ public class UserRegistrationService implements IUserRegistrationService {
 
         UserEntity userEntity = converter.toEntity(userDto);
 
-        userDao.create(userEntity);
+        userRepository.save(userEntity);
 
         welcomeMailService.sendWelcomeMail(userDto.getEmail());
-
     }
 }

@@ -1,6 +1,6 @@
 package by.it_academy.jd2.mail.service.impl;
 
-import by.it_academy.jd2.mail.dao.api.IMailDao;
+import by.it_academy.jd2.mail.dao.api.IMailRepository;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.dao.entity.MailStatus;
 import by.it_academy.jd2.mail.service.api.IMailCreationService;
@@ -12,12 +12,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class MailCreationService implements IMailCreationService {
-    private final IMailDao mailDao;
+    private final IMailRepository mailRepository;
     private final MailConverter mailConverter;
     private final MailSendService mailSendService;
 
-    public MailCreationService(IMailDao mailDao, MailConverter mailConverter, MailSendService mailSendService) {
-        this.mailDao = mailDao;
+    public MailCreationService(IMailRepository mailDao, MailConverter mailConverter, MailSendService mailSendService) {
+        this.mailRepository = mailDao;
         this.mailConverter = mailConverter;
         this.mailSendService = mailSendService;
     }
@@ -34,7 +34,7 @@ public class MailCreationService implements IMailCreationService {
     @Transactional
     public void create(MailDTO dto) {
         MailEntity mailEntity = convertDtoToEntity(dto);
-        mailDao.save(mailEntity);
+        mailRepository.save(mailEntity);
         mailSendService.send(dto);
     }
 
@@ -47,11 +47,11 @@ public class MailCreationService implements IMailCreationService {
 
     @Override
     public void update(MailEntity mail) {
-        mailDao.update(mail);
+        mailRepository.save(mail);
     }
 
     @Override
     public List<MailEntity> getLoaded() {
-        return mailDao.getByStatus(MailStatus.OK);
+        return mailRepository.findByStatus(MailStatus.OK);
     }
 }
