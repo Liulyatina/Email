@@ -50,6 +50,26 @@
         <property name="persistenceUnitName" value="jpa-entity-definition"/>
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
     <bean id="daoFactory" class="by.it_academy.jd2.mail.dao.factory.DaoFactory" factory-method="getEntityManager"/>
+
+    <bean id="mailSendJob" class="by.it_academy.jd2.mail.service.job.MailSendJob">
+        <constructor-arg ref="mailCreate"/>
+        <constructor-arg ref="mailSend"/>
+    </bean>
+
+    <bean id="timeUnitSeconds" class="java.util.concurrent.TimeUnit" factory-method="valueOf">
+        <constructor-arg value="SECONDS"/>
+    </bean>
+
+    <bean id="sendScheduling" class="by.it_academy.jd2.mail.service.scheduling.MailSendScheduling">
+        <constructor-arg value="10"/>
+        <constructor-arg value="1"/>
+        <constructor-arg ref="timeUnitSeconds"/>
+        <constructor-arg ref="mailSendJob"/>
+    </bean>
 
 </beans>

@@ -3,7 +3,6 @@ package by.it_academy.jd2.mail.controller.http;
 import by.it_academy.jd2.mail.controller.factory.AppFactory;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.service.api.IMailCreationService;
-import by.it_academy.jd2.mail.service.api.IMailSendService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;

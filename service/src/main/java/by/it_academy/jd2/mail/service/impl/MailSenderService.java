@@ -1,7 +1,8 @@
 package by.it_academy.jd2.mail.service.impl;
 
 import by.it_academy.jd2.mail.dao.api.IMailRepository;
-import by.it_academy.jd2.mail.service.api.IMailSendService;
+import by.it_academy.jd2.mail.dao.entity.MailEntity;
+import by.it_academy.jd2.mail.service.api.IMailSenderService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import by.it_academy.jd2.mail.service.converter.MailConverter;
 import jakarta.mail.*;
@@ -12,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class MailSenderService implements IMailSendService {
+public class MailSenderService implements IMailSenderService {
     private static final Logger logger = LoggerFactory.getLogger(MailSenderService.class);
 
     private final IMailRepository mailRepository;
@@ -35,7 +36,7 @@ public class MailSenderService implements IMailSendService {
     }
 
     @Override
-    public void send(MailDTO mail) {
+    public void send(MailEntity mail) {
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

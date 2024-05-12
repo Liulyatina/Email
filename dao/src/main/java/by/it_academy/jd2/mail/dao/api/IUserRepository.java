@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface IUserRepository extends JpaRepository<UserEntity, Long> {
-    List<UserEntity> getByLogin(String email);
+    List<UserEntity> getByEmail(String email);
 }
