@@ -1,13 +1,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc
-		https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/data/jpa
+		https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/data/jpa
 		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <!-- Включаем поддержку аннотаций в MVC -->
@@ -23,11 +25,9 @@
     <!-- Бины Service -->
     <bean id="mailCreate" class="by.it_academy.jd2.mail.service.impl.MailCreationService">
         <constructor-arg ref="mailConvert"/>
-        <constructor-arg ref="mailSend"/>
     </bean>
 
-
-    <bean id="mailSend" class="by.it_academy.jd2.mail.service.impl.MailSendService">
+    <bean id="mailSend" class="by.it_academy.jd2.mail.service.impl.MailSenderService">
         <constructor-arg ref="mailConvert"/>
         <constructor-arg value="smtp.mail.ru"/>
         <constructor-arg value="587"/>
@@ -37,8 +37,6 @@
 
     <bean id="mailConvert" class="by.it_academy.jd2.mail.service.converter.MailConverter"/>
 
-    <bean id="searchMailService" class="by.it_academy.jd2.mail.service.impl.SearchMailService"/>
-
     <bean id="userRegistration" class="by.it_academy.jd2.mail.service.impl.UserRegistrationService">
         <constructor-arg ref="userConvert"/>
         <constructor-arg ref="welcomeMail"/>
@@ -46,8 +44,12 @@
 
     <bean id="userConvert" class="by.it_academy.jd2.mail.service.converter.UserConverter"/>
 
-    <bean id="welcomeMail" class="by.it_academy.jd2.mail.service.impl.WelcomeMailService">
-        <constructor-arg ref="mailSend"/>
+    <bean id="welcomeMail" class="by.it_academy.jd2.mail.service.impl.WelcomeMailService"/>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="jpa-entity-definition"/>
     </bean>
+
+    <bean id="daoFactory" class="by.it_academy.jd2.mail.dao.factory.DaoFactory" factory-method="getEntityManager"/>
 
 </beans>

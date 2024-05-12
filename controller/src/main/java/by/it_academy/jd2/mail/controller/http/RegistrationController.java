@@ -16,36 +16,16 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping("/api/registration")
 public class RegistrationController {
-    private final ObjectMapper mapper = AppFactory.getMapper();
     private final IUserRegistrationService userService;
 
     public RegistrationController(IUserRegistrationService userService) {
         this.userService = userService;
     }
 
-    @PostMapping(produces = "application/json;charset=UTF-8")
-    public ResponseEntity<String> registration(@RequestParam("email") String email,
-                               @RequestParam("password") String password,
-                               @RequestParam("birthday") String birthday,
-                               @RequestParam("fullName") String fullName) throws IOException, FailMailSendException {
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody UserDto userDto) throws FailMailSendException {
 
-        LocalDate parsedBrithday = LocalDate.parse(birthday);
-
-
-//        тут этого быть не должно
-        UserDto userDto = UserDto.builder()
-                .email(email)
-                .password(password)
-                .birthday(parsedBrithday.atStartOfDay())
-                .fullName(fullName)
-                .build();
-        try {
-            userService.create(userDto);
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body("Письмо успешно сохранено и отправлено");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Не удалось сохранить и отправить письмо: " + e.getMessage());
-        }
+        userService.create(userDto);
     }
 }

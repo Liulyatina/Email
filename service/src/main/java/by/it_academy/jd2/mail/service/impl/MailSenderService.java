@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class MailSendService implements IMailSendService {
-    private static final Logger logger = LoggerFactory.getLogger(MailSendService.class);
+public class MailSenderService implements IMailSendService {
+    private static final Logger logger = LoggerFactory.getLogger(MailSenderService.class);
 
     private final IMailRepository mailRepository;
     private final MailConverter mailConverter;
@@ -21,7 +21,7 @@ public class MailSendService implements IMailSendService {
     private final String password;
     private final Properties props;
 
-    public MailSendService(IMailRepository mailDao, MailConverter mailConverter, String host, String port, String username, String password) {
+    public MailSenderService(IMailRepository mailDao, MailConverter mailConverter, String host, String port, String username, String password) {
         this.mailRepository = mailDao;
         this.mailConverter = mailConverter;
         this.username = username;

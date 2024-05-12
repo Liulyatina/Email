@@ -14,6 +14,6 @@ public class MailSendScheduling {
         this.executorService = Executors.newScheduledThreadPool(coreSize);
         this.mailSendJob = mailSendJob;
 
-        this.executorService.schedule(this.mailSendJob::start, delay, unit);
+        this.executorService.scheduleAtFixedRate(this.mailSendJob::start, 0, 10, TimeUnit.SECONDS);
     }
 }
