@@ -13,6 +13,7 @@ public class MailEntity {
     private Long id;
     @Column(name = "dt_create")
     private LocalDateTime dtCreate;
+    @Enumerated(EnumType.STRING)
     private MailStatus status;
     private String recipient;
     private String subject;

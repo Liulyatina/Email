@@ -18,11 +18,20 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(String email, String password, LocalDateTime birthday, String fullName) {
+    public UserEntity(Long id,String email, String password, LocalDateTime birthday, String fullName) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.birthday = birthday;
         this.fullName = fullName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -56,4 +65,5 @@ public class UserEntity {
     public void setFullname(String fullname) {
         this.fullName = fullname;
     }
+
 }
