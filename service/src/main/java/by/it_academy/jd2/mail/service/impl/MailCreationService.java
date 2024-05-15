@@ -4,8 +4,10 @@ import by.it_academy.jd2.mail.dao.api.IMailRepository;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.dao.entity.MailStatus;
 import by.it_academy.jd2.mail.service.api.IMailCreationService;
+import by.it_academy.jd2.mail.service.api.IMailSenderService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
 import by.it_academy.jd2.mail.service.converter.MailConverter;
+import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -43,7 +45,7 @@ public class MailCreationService implements IMailCreationService {
 
     @Override
     @Transactional
-    public void create(MailDTO dto) {
+    public void create(MailDTO dto){
 
         if (dto.getRecipient() == null || dto.getRecipient().isBlank()) {
             throw new IllegalArgumentException("Ошибка при создании сообщения. Не указан отправитель");

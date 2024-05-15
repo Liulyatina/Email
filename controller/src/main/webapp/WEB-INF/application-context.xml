@@ -3,6 +3,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
@@ -10,7 +11,7 @@
 		http://www.springframework.org/schema/mvc
 		https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/data/jpa
-		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!-- Включаем поддержку аннотаций в MVC -->
     <mvc:annotation-driven/>
@@ -21,6 +22,9 @@
 
     <!-- Сканирование репозиториев -->
     <jpa:repositories base-package="by.it_academy.jd2.mail.dao.api"/>
+
+    <!-- Включаем поддержку аннотаций для планирования задач -->
+    <task:annotation-driven/>
 
     <!-- Бины Service -->
     <bean id="mailCreate" class="by.it_academy.jd2.mail.service.impl.MailCreationService">
@@ -58,18 +62,6 @@
     <bean id="mailSendJob" class="by.it_academy.jd2.mail.service.job.MailSendJob">
         <constructor-arg ref="mailCreate"/>
         <constructor-arg ref="mailSend"/>
-    </bean>
-
-    <bean id="timeUnitSeconds" class="java.util.concurrent.TimeUnit" factory-method="valueOf">
-        <constructor-arg value="SECONDS"/>
-    </bean>
-
-    <bean id="sendScheduling" class="by.it_academy.jd2.mail.service.scheduling.MailSendScheduling">
-        <constructor-arg value="10" type="int"/>
-        <constructor-arg value="0" type="long"/>
-        <constructor-arg value="10" type="long"/>
-        <constructor-arg ref="timeUnitSeconds"/>
-        <constructor-arg ref="mailSendJob"/>
     </bean>
 
 </beans>

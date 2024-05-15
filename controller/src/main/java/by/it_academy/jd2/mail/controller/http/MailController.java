@@ -4,6 +4,7 @@ import by.it_academy.jd2.mail.controller.factory.AppFactory;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.service.api.IMailCreationService;
 import by.it_academy.jd2.mail.service.api.dto.MailDTO;
+import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,13 +40,13 @@ public class MailController {
 
     @PostMapping(produces = "application/json;charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveMail(@RequestBody MailDTO mailDTO) throws IOException{
+    public void saveMail(@RequestBody MailDTO mailDTO) throws IOException, FailMailSendException {
         mailService.create(mailDTO);
     }
 
     @PostMapping(value = "/bulk", produces = "application/json;charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveMails(@RequestBody List<MailDTO> mailDTOs) throws IOException{
+    public void saveMails(@RequestBody List<MailDTO> mailDTOs) throws IOException, FailMailSendException {
         for (MailDTO mailDTO : mailDTOs) {
             mailService.create(mailDTO);
         }

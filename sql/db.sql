@@ -5,7 +5,7 @@ CREATE TABLE mail_app.emails
 (
     id        SERIAL PRIMARY KEY,
     dt_create TIMESTAMP,
-    status    VARCHAR(255),
+    status    INT,
     recipient VARCHAR(255),
     subject   VARCHAR(255),
     text      TEXT

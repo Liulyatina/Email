@@ -6,6 +6,8 @@ import by.it_academy.jd2.mail.service.api.IMailCreationService;
 import by.it_academy.jd2.mail.service.api.IMailSenderService;
 import by.it_academy.jd2.mail.service.exceptions.FailMailSendException;
 import by.it_academy.jd2.mail.service.job.api.IJob;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ public class MailSendJob implements IJob {
     }
 
     @Override
+    @Scheduled(fixedRate = 5000)
+    @Transactional
     public void start() {
         List<MailEntity> loaded = mailCreationService.getLoaded();
 
@@ -36,3 +40,4 @@ public class MailSendJob implements IJob {
         }
     }
 }
+
