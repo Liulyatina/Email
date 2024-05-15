@@ -28,6 +28,9 @@ public class UserRegistrationService implements IUserRegistrationService {
         if (userDto.getEmail() == null || userDto.getEmail().isBlank()) {
             throw new IllegalArgumentException("Логин должен быть обязательно указан");
         }
+        if (userRepository.getByEmail(userDto.getEmail()) != null) {
+            throw new IllegalArgumentException("Email уже существует, введите другой");
+        }
         if (userDto.getPassword() == null || userDto.getPassword().isBlank()) {
             throw new IllegalArgumentException("Пароль должен быть обязательно указан");
         }
