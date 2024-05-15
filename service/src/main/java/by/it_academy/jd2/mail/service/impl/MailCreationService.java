@@ -18,7 +18,7 @@ public class MailCreationService implements IMailCreationService {
     private final IMailRepository mailRepository;
     private final MailConverter mailConverter;
 
-    public MailCreationService(IMailRepository mailDao, MailConverter mailConverter, MailSenderService mailSendService) {
+    public MailCreationService(IMailRepository mailDao, MailConverter mailConverter) {
         this.mailRepository = mailDao;
         this.mailConverter = mailConverter;
     }
@@ -45,15 +45,15 @@ public class MailCreationService implements IMailCreationService {
     @Transactional
     public void create(MailDTO dto) {
 
-        if (dto.getRecipient() == null) {
+        if (dto.getRecipient() == null || dto.getRecipient().isBlank()) {
             throw new IllegalArgumentException("Ошибка при создании сообщения. Не указан отправитель");
         }
 
-        if (dto.getSubject() == null) {
+        if (dto.getSubject() == null || dto.getSubject().isBlank()) {
             throw new IllegalArgumentException("Ошибка при создании сообщения. Не указан получатель");
         }
 
-        if (dto.getText() == null) {
+        if (dto.getText() == null || dto.getText().isBlank()) {
             throw new IllegalArgumentException("Ошибка при создании сообщения. Отсутствует текст сообщения");
         }
 

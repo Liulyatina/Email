@@ -67,7 +67,7 @@
     <bean id="sendScheduling" class="by.it_academy.jd2.mail.service.scheduling.MailSendScheduling">
         <constructor-arg value="10" type="int"/>
         <constructor-arg value="0" type="long"/>
-        <constructor-arg value="50" type="long"/>
+        <constructor-arg value="10" type="long"/>
         <constructor-arg ref="timeUnitSeconds"/>
         <constructor-arg ref="mailSendJob"/>
     </bean>
