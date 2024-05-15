@@ -23,7 +23,7 @@ public class UserRegistrationService implements IUserRegistrationService {
 
     @Override
     @Transactional
-    public void create(UserDto userDto) throws FailMailSendException {
+    public void create(UserDto userDto){
 
         if (userDto.getEmail() == null || userDto.getEmail().isBlank()) {
             throw new IllegalArgumentException("Логин должен быть обязательно указан");
@@ -41,7 +41,5 @@ public class UserRegistrationService implements IUserRegistrationService {
         UserEntity userEntity = converter.toEntity(userDto);
 
         userRepository.save(userEntity);
-
-        welcomeMailService.sendWelcomeMail(userDto.getEmail());
     }
 }

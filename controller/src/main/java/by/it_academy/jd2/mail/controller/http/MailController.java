@@ -38,19 +38,17 @@ public class MailController {
     }
 
     @PostMapping(produces = "application/json;charset=UTF-8")
-    public ResponseEntity<String> saveMail(@RequestBody MailDTO mailDTO) throws IOException{
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveMail(@RequestBody MailDTO mailDTO) throws IOException{
         mailService.create(mailDTO);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .build();
     }
 
     @PostMapping(value = "/bulk", produces = "application/json;charset=UTF-8")
-    public ResponseEntity<String> saveMails(@RequestBody List<MailDTO> mailDTOs) throws IOException{
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveMails(@RequestBody List<MailDTO> mailDTOs) throws IOException{
         for (MailDTO mailDTO : mailDTOs) {
             mailService.create(mailDTO);
         }
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .build();
     }
 }
 

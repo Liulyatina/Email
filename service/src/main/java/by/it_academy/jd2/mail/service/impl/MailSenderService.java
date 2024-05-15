@@ -1,10 +1,7 @@
 package by.it_academy.jd2.mail.service.impl;
 
-import by.it_academy.jd2.mail.dao.api.IMailRepository;
 import by.it_academy.jd2.mail.dao.entity.MailEntity;
 import by.it_academy.jd2.mail.service.api.IMailSenderService;
-import by.it_academy.jd2.mail.service.api.dto.MailDTO;
-import by.it_academy.jd2.mail.service.converter.MailConverter;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -15,16 +12,11 @@ import java.util.Properties;
 
 public class MailSenderService implements IMailSenderService {
     private static final Logger logger = LoggerFactory.getLogger(MailSenderService.class);
-
-    private final IMailRepository mailRepository;
-    private final MailConverter mailConverter;
     private final String username;
     private final String password;
     private final Properties props;
 
-    public MailSenderService(IMailRepository mailDao, MailConverter mailConverter, String host, String port, String username, String password) {
-        this.mailRepository = mailDao;
-        this.mailConverter = mailConverter;
+    public MailSenderService(String host, String port, String username, String password) {
         this.username = username;
         this.password = password;
 

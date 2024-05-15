@@ -44,6 +44,19 @@ public class MailCreationService implements IMailCreationService {
     @Override
     @Transactional
     public void create(MailDTO dto) {
+
+        if (dto.getRecipient() == null) {
+            throw new IllegalArgumentException("Ошибка при создании сообщения. Не указан отправитель");
+        }
+
+        if (dto.getSubject() == null) {
+            throw new IllegalArgumentException("Ошибка при создании сообщения. Не указан получатель");
+        }
+
+        if (dto.getText() == null) {
+            throw new IllegalArgumentException("Ошибка при создании сообщения. Отсутствует текст сообщения");
+        }
+
         MailEntity mailEntity = convertDtoToEntity(dto);
         mailRepository.save(mailEntity);
     }
@@ -62,6 +75,6 @@ public class MailCreationService implements IMailCreationService {
 
     @Override
     public List<MailEntity> getLoaded() {
-        return mailRepository.findByStatus(MailStatus.OK);
+        return mailRepository.findByStatus(MailStatus.LOADED);
     }
 }

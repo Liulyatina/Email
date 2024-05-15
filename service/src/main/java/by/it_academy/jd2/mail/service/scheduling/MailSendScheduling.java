@@ -10,10 +10,11 @@ public class MailSendScheduling {
     private final ScheduledExecutorService executorService;
     private final MailSendJob mailSendJob;
 
-    public MailSendScheduling(int coreSize, long delay, TimeUnit unit, MailSendJob mailSendJob) {
+    public MailSendScheduling(int coreSize, long delay, long period,
+                              TimeUnit unit, MailSendJob mailSendJob) {
         this.executorService = Executors.newScheduledThreadPool(coreSize);
         this.mailSendJob = mailSendJob;
 
-        this.executorService.scheduleAtFixedRate(this.mailSendJob::start, 0, 10, TimeUnit.SECONDS);
+        this.executorService.scheduleAtFixedRate(this.mailSendJob::start, delay, period, unit);
     }
 }
