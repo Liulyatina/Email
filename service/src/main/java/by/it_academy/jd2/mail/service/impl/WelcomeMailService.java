@@ -21,7 +21,7 @@ public class WelcomeMailService {
         this.mailRepository = mailRepository;
     }
 
-    public void sendWelcomeMail(String userEmail) throws FailMailSendException {
+    public void saveWelcomeMail(String userEmail){
         MailEntity mailEntity = new MailEntity();
         mailEntity.setRecipient(userEmail);
         mailEntity.setSubject(WELCOME_SUBJECT);

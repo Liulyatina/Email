@@ -41,5 +41,7 @@ public class UserRegistrationService implements IUserRegistrationService {
         UserEntity userEntity = converter.toEntity(userDto);
 
         userRepository.save(userEntity);
+
+        welcomeMailService.saveWelcomeMail(userDto.getEmail());
     }
 }
